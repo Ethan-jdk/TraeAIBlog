@@ -1,0 +1,46 @@
+/* 全局样式 */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 页面切换动画 */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+/* Element Plus 样式覆盖 */
+.el-button {
+  border-radius: 6px;
+}
+
+.el-card {
+  border-radius: 8px;
+  border: none;
+}
+
+.el-input__wrapper {
+  border-radius: 6px;
+}
+
+.el-tag {
+  border-radius: 4px;
+}
+
+/* 响应式布局辅助类 */
+@media (max-width: 768px) {
+  .hidden-xs {
+    display: none !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .visible-xs {
+    display: none !important;
+  }
+}
