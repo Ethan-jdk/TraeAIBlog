@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Single Page Apps for GitHub Pages</title>
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages
+      // MIT License
+      // https://github.com/rafgraph/spa-github-pages
+      
+      // This script takes the current url and converts the path and query
+      // string into just a query string, and then redirects the browser
+      // to the new url with only a query string and hash fragment
+      
+      var pathPrefix = '/blog';
+      var l = window.location;
+      
+      // 如果路径已经包含 404.html，说明已经处理过了
+      if (l.pathname.indexOf('404.html') !== -1) {
+        // 从路径中提取实际的路由
+        var pathSegments = l.pathname.split('/');
+        var repoIndex = pathSegments.indexOf('blog');
+        
+        if (repoIndex !== -1 && repoIndex < pathSegments.length - 1) {
+          // 重建路径，去掉 404.html
+          var actualPath = pathSegments.slice(repoIndex + 1).join('/');
+          if (actualPath && actualPath !== '404.html') {
+            l.replace(
+              l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+              pathPrefix + '/?p=/' + actualPath + l.hash
+            );
+          } else {
+            l.replace(
+              l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+              pathPrefix + '/' + l.hash
+            );
+          }
+        }
+      } else {
+        // 正常 404 处理
+        var path = l.pathname;
+        
+        // 去掉仓库名前缀
+        if (path.indexOf(pathPrefix) === 0) {
+          path = path.substring(pathPrefix.length);
+        }
+        
+        // 重定向到首页，带上原始路径参数
+        l.replace(
+          l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+          pathPrefix + '/?p=' + path + l.search.replace(/&/g, '~and~') + l.hash
+        );
+      }
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
