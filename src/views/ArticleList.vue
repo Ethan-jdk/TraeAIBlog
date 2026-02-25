@@ -135,21 +135,21 @@ const clearSearch = () => {
 .page-title {
   font-size: 32px;
   font-weight: 600;
-  color: #303133;
+  color: var(--text-color, #303133);
   margin-bottom: 8px;
 }
 
 .page-subtitle {
-  color: #909399;
+  color: var(--text-muted, #909399);
   font-size: 14px;
 }
 
 .filter-section {
-  background: #fff;
+  background: var(--card-bg-color, #fff);
   padding: 20px;
   border-radius: 8px;
   margin-bottom: 30px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 12px var(--shadow-color, rgba(0, 0, 0, 0.05));
 }
 
 .filter-row {
@@ -167,14 +167,14 @@ const clearSearch = () => {
 
 .filter-label {
   font-size: 14px;
-  color: #606266;
+  color: var(--text-secondary, #606266);
   white-space: nowrap;
 }
 
 .search-info {
   margin-top: 15px;
   padding-top: 15px;
-  border-top: 1px solid #e4e7ed;
+  border-top: 1px solid var(--border-color, #e4e7ed);
 }
 
 .empty-state {

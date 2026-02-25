@@ -27,6 +27,17 @@
           clearable
           @keyup.enter="handleSearch"
         />
+        <el-button
+          circle
+          class="theme-btn"
+          @click="toggleTheme"
+          :title="isDark ? '切换到亮色模式' : '切换到暗色模式'"
+        >
+          <el-icon :size="18">
+            <Sunny v-if="isDark" />
+            <Moon v-else />
+          </el-icon>
+        </el-button>
       </div>
     </div>
   </el-header>
@@ -35,11 +46,13 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { Document, Search } from '@element-plus/icons-vue'
+import { Document, Search, Sunny, Moon } from '@element-plus/icons-vue'
+import { useTheme } from '../../composables/useTheme.js'
 
 const route = useRoute()
 const router = useRouter()
 const searchQuery = ref('')
+const { isDark, toggleTheme } = useTheme()
 
 const activeIndex = computed(() => route.path)
 
@@ -55,7 +68,7 @@ const handleSearch = () => {
 
 <style scoped>
 .navbar {
-  background-color: #fff;
+  background-color: var(--nav-bg-color, #fff);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 0;
   position: fixed;
@@ -64,6 +77,7 @@ const handleSearch = () => {
   right: 0;
   z-index: 1000;
   height: 60px;
+  transition: background-color 0.3s;
 }
 
 .nav-container {
@@ -91,7 +105,8 @@ const handleSearch = () => {
 .logo-text {
   font-size: 20px;
   font-weight: bold;
-  color: #303133;
+  color: var(--text-color, #303133);
+  transition: color 0.3s;
 }
 
 .nav-menu {
@@ -99,18 +114,40 @@ const handleSearch = () => {
   flex: 1;
   justify-content: center;
   margin: 0 40px;
+  background-color: transparent;
 }
 
 .nav-right {
   display: flex;
   align-items: center;
+  gap: 12px;
 }
 
 .search-input {
   width: 200px;
 }
 
+.theme-btn {
+  transition: all 0.3s;
+}
+
+.theme-btn:hover {
+  transform: rotate(20deg);
+}
+
 :deep(.el-menu--horizontal) {
   border-bottom: none;
+}
+
+:deep(.el-menu--horizontal .el-menu-item) {
+  color: var(--text-color, #303133);
+}
+
+:deep(.el-menu--horizontal .el-menu-item.is-active) {
+  color: #409EFF;
+}
+
+:deep(.el-menu--horizontal .el-menu-item:hover) {
+  background-color: var(--hover-bg-color, #f5f7fa);
 }
 </style>

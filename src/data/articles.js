@@ -46,7 +46,7 @@ export default {
     category: '前端开发',
     tags: ['Vue3', 'JavaScript', '前端'],
     views: 1250,
-    coverImage: 'https://picsum.photos/800/400?random=1'
+    coverImage: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&h=400&fit=crop'
   },
   {
     id: 2,
@@ -103,7 +103,7 @@ Element Plus 支持通过 CSS 变量进行主题定制。
     category: '前端开发',
     tags: ['Element Plus', 'Vue3', 'UI组件'],
     views: 980,
-    coverImage: 'https://picsum.photos/800/400?random=2'
+    coverImage: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=400&fit=crop'
   },
   {
     id: 3,
@@ -158,7 +158,7 @@ async function fetchData() {
     category: 'JavaScript',
     tags: ['JavaScript', '异步编程', 'Promise'],
     views: 1500,
-    coverImage: 'https://picsum.photos/800/400?random=3'
+    coverImage: 'https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?w=800&h=400&fit=crop'
   },
   {
     id: 4,
@@ -203,7 +203,7 @@ CSS Grid 是一个二维布局系统，可以同时处理行和列。
     category: 'CSS',
     tags: ['CSS', 'Grid', '布局'],
     views: 1100,
-    coverImage: 'https://picsum.photos/800/400?random=4'
+    coverImage: 'https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?w=800&h=400&fit=crop'
   },
   {
     id: 5,
@@ -251,7 +251,7 @@ TypeScript 提供了许多内置的工具类型。
     category: 'TypeScript',
     tags: ['TypeScript', '类型系统'],
     views: 890,
-    coverImage: 'https://picsum.photos/800/400?random=5'
+    coverImage: 'https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=800&h=400&fit=crop'
   },
   {
     id: 6,
@@ -296,7 +296,7 @@ TypeScript 提供了许多内置的工具类型。
     category: '性能优化',
     tags: ['性能', '优化', '前端'],
     views: 2000,
-    coverImage: 'https://picsum.photos/800/400?random=6'
+    coverImage: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=400&fit=crop'
   }
 ]
 

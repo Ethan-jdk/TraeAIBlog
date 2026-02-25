@@ -4,44 +4,46 @@
       <el-image :src="article.coverImage" fit="cover" class="cover-image">
         <template #error>
           <div class="image-placeholder">
-            <el-icon :size="40"><Picture /></el-icon>
+            <el-icon :size="40">
+              <Picture />
+            </el-icon>
           </div>
         </template>
       </el-image>
       <div class="category-tag">{{ article.category }}</div>
     </div>
-    
+
     <div class="article-content">
       <h3 class="article-title" @click="goToDetail">{{ article.title }}</h3>
       <p class="article-summary">{{ article.summary }}</p>
-      
+
       <div class="article-meta">
         <div class="meta-left">
           <span class="author">
-            <el-icon><User /></el-icon>
+            <el-icon>
+              <User />
+            </el-icon>
             {{ article.author }}
           </span>
           <span class="date">
-            <el-icon><Calendar /></el-icon>
+            <el-icon>
+              <Calendar />
+            </el-icon>
             {{ article.date }}
           </span>
         </div>
         <div class="meta-right">
           <span class="views">
-            <el-icon><View /></el-icon>
+            <el-icon>
+              <View />
+            </el-icon>
             {{ article.views }}
           </span>
         </div>
       </div>
-      
+
       <div class="article-tags">
-        <el-tag
-          v-for="tag in article.tags.slice(0, 3)"
-          :key="tag"
-          size="small"
-          effect="plain"
-          class="tag"
-        >
+        <el-tag v-for="tag in article.tags.slice(0, 3)" :key="tag" size="small" effect="plain" class="tag">
           {{ tag }}
         </el-tag>
       </div>
@@ -103,15 +105,15 @@ const goToDetail = () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f5f7fa;
-  color: #909399;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
 }
 
 .category-tag {
   position: absolute;
   top: 12px;
   left: 12px;
-  background-color: #409EFF;
+  background-color: #409eff;
   color: #fff;
   padding: 4px 12px;
   border-radius: 4px;
@@ -125,7 +127,7 @@ const goToDetail = () => {
 .article-title {
   font-size: 18px;
   font-weight: 600;
-  color: #303133;
+  color: var(--text-color, #303133);
   margin: 0 0 12px 0;
   line-height: 1.4;
   cursor: pointer;
@@ -133,12 +135,12 @@ const goToDetail = () => {
 }
 
 .article-title:hover {
-  color: #409EFF;
+  color: #409eff;
 }
 
 .article-summary {
   font-size: 14px;
-  color: #606266;
+  color: var(--text-secondary, #606266);
   line-height: 1.6;
   margin: 0 0 16px 0;
   display: -webkit-box;
@@ -153,7 +155,7 @@ const goToDetail = () => {
   align-items: center;
   margin-bottom: 12px;
   font-size: 13px;
-  color: #909399;
+  color: var(--text-muted, #909399);
 }
 
 .meta-left {
@@ -179,7 +181,7 @@ const goToDetail = () => {
 }
 
 .tag:hover {
-  color: #409EFF;
-  border-color: #409EFF;
+  color: #409eff;
+  border-color: #409eff;
 }
 </style>

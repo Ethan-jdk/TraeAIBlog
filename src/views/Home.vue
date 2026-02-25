@@ -34,22 +34,20 @@
     <section class="featured-section">
       <div class="section-header">
         <h2 class="section-title">
-          <el-icon><Star /></el-icon>
+          <el-icon>
+            <Star />
+          </el-icon>
           精选文章
         </h2>
         <router-link to="/articles" class="view-all">
-          查看全部 <el-icon><ArrowRight /></el-icon>
+          查看全部 <el-icon>
+            <ArrowRight />
+          </el-icon>
         </router-link>
       </div>
-      
+
       <el-row :gutter="20">
-        <el-col
-          v-for="article in featuredArticles"
-          :key="article.id"
-          :xs="24"
-          :sm="12"
-          :md="8"
-        >
+        <el-col v-for="article in featuredArticles" :key="article.id" :xs="24" :sm="12" :md="8">
           <ArticleCard :article="article" />
         </el-col>
       </el-row>
@@ -59,19 +57,18 @@
     <section class="categories-section">
       <div class="section-header">
         <h2 class="section-title">
-          <el-icon><Folder /></el-icon>
+          <el-icon>
+            <Folder />
+          </el-icon>
           文章分类
         </h2>
       </div>
-      
+
       <div class="categories-grid">
-        <div
-          v-for="category in categories.slice(1)"
-          :key="category"
-          class="category-card"
-          @click="filterByCategory(category)"
-        >
-          <el-icon :size="32"><Document /></el-icon>
+        <div v-for="category in categories.slice(1)" :key="category" class="category-card" @click="filterByCategory(category)">
+          <el-icon :size="32">
+            <Document />
+          </el-icon>
           <span class="category-name">{{ category }}</span>
           <span class="category-count">{{ getCategoryCount(category) }} 篇</span>
         </div>
@@ -82,19 +79,15 @@
     <section class="latest-section">
       <div class="section-header">
         <h2 class="section-title">
-          <el-icon><Timer /></el-icon>
+          <el-icon>
+            <Timer />
+          </el-icon>
           最新文章
         </h2>
       </div>
-      
+
       <el-row :gutter="20">
-        <el-col
-          v-for="article in latestArticles"
-          :key="article.id"
-          :xs="24"
-          :sm="12"
-          :md="8"
-        >
+        <el-col v-for="article in latestArticles" :key="article.id" :xs="24" :sm="12" :md="8">
           <ArticleCard :article="article" />
         </el-col>
       </el-row>
@@ -114,20 +107,18 @@ const router = useRouter()
 const featuredArticles = computed(() => articles.slice(0, 3))
 
 const latestArticles = computed(() => {
-  return [...articles]
-    .sort((a, b) => new Date(b.date) - new Date(a.date))
-    .slice(0, 3)
+  return [...articles].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 3)
 })
 
 const totalViews = computed(() => {
   return articles.reduce((sum, article) => sum + article.views, 0)
 })
 
-const getCategoryCount = (category) => {
+const getCategoryCount = category => {
   return articles.filter(article => article.category === category).length
 }
 
-const filterByCategory = (category) => {
+const filterByCategory = category => {
   router.push({
     path: '/articles',
     query: { category }
@@ -212,7 +203,7 @@ const filterByCategory = (category) => {
 .section-title {
   font-size: 24px;
   font-weight: 600;
-  color: #303133;
+  color: var(--text-color, #303133);
   display: flex;
   align-items: center;
   gap: 8px;
@@ -223,7 +214,7 @@ const filterByCategory = (category) => {
   display: flex;
   align-items: center;
   gap: 4px;
-  color: #409EFF;
+  color: #409eff;
   text-decoration: none;
   font-size: 14px;
   transition: color 0.3s;
@@ -240,23 +231,23 @@ const filterByCategory = (category) => {
 }
 
 .category-card {
-  background: #fff;
+  background: var(--card-bg-color, #fff);
   border-radius: 8px;
   padding: 30px 20px;
   text-align: center;
   cursor: pointer;
   transition: all 0.3s;
-  border: 1px solid #e4e7ed;
+  border: 1px solid var(--border-color, #e4e7ed);
 }
 
 .category-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  border-color: #409EFF;
+  border-color: #409eff;
 }
 
 .category-card .el-icon {
-  color: #409EFF;
+  color: #409eff;
   margin-bottom: 12px;
 }
 
@@ -264,28 +255,28 @@ const filterByCategory = (category) => {
   display: block;
   font-size: 16px;
   font-weight: 600;
-  color: #303133;
+  color: var(--text-color, #303133);
   margin-bottom: 4px;
 }
 
 .category-count {
   font-size: 13px;
-  color: #909399;
+  color: var(--text-muted, #909399);
 }
 
 @media (max-width: 768px) {
   .hero-title {
     font-size: 32px;
   }
-  
+
   .hero-stats {
     gap: 30px;
   }
-  
+
   .stat-number {
     font-size: 28px;
   }
-  
+
   .hero-actions {
     flex-direction: column;
     align-items: center;

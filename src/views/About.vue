@@ -199,11 +199,11 @@ const timeline = [
 .profile-name {
   margin: 16px 0 4px;
   font-size: 24px;
-  color: #303133;
+  color: var(--text-color, #303133);
 }
 
 .profile-title {
-  color: #909399;
+  color: var(--text-muted, #909399);
   font-size: 14px;
   margin: 0;
 }
@@ -212,8 +212,8 @@ const timeline = [
   display: flex;
   justify-content: space-around;
   padding: 20px 0;
-  border-top: 1px solid #e4e7ed;
-  border-bottom: 1px solid #e4e7ed;
+  border-top: 1px solid var(--border-color, #e4e7ed);
+  border-bottom: 1px solid var(--border-color, #e4e7ed);
   margin: 20px 0;
 }
 
@@ -225,7 +225,7 @@ const timeline = [
 
 .stat-label {
   font-size: 12px;
-  color: #909399;
+  color: var(--text-muted, #909399);
   margin-top: 4px;
 }
 
@@ -246,11 +246,11 @@ const timeline = [
   align-items: center;
   gap: 8px;
   font-weight: 600;
-  color: #303133;
+  color: var(--text-color, #303133);
 }
 
 .intro-text {
-  color: #606266;
+  color: var(--text-secondary, #606266);
   line-height: 1.8;
   margin-bottom: 16px;
 }
@@ -272,22 +272,22 @@ const timeline = [
 
 .skill-name {
   font-weight: 500;
-  color: #303133;
+  color: var(--text-color, #303133);
 }
 
 .skill-level {
-  color: #909399;
+  color: var(--text-muted, #909399);
   font-size: 14px;
 }
 
 :deep(.el-timeline-item__content h4) {
   margin: 0 0 8px;
-  color: #303133;
+  color: var(--text-color, #303133);
 }
 
 :deep(.el-timeline-item__content p) {
   margin: 0;
-  color: #606266;
+  color: var(--text-secondary, #606266);
   line-height: 1.6;
 }
 

@@ -6,21 +6,27 @@
         <el-breadcrumb-item :to="{ path: '/articles' }">文章</el-breadcrumb-item>
         <el-breadcrumb-item>{{ article.title }}</el-breadcrumb-item>
       </el-breadcrumb>
-      
+
       <h1 class="article-title">{{ article.title }}</h1>
-      
+
       <div class="article-meta">
         <div class="meta-left">
           <span class="meta-item">
-            <el-icon><User /></el-icon>
+            <el-icon>
+              <User />
+            </el-icon>
             {{ article.author }}
           </span>
           <span class="meta-item">
-            <el-icon><Calendar /></el-icon>
+            <el-icon>
+              <Calendar />
+            </el-icon>
             {{ article.date }}
           </span>
           <span class="meta-item">
-            <el-icon><View /></el-icon>
+            <el-icon>
+              <View />
+            </el-icon>
             {{ article.views }} 阅读
           </span>
         </div>
@@ -28,15 +34,9 @@
           <el-tag type="primary">{{ article.category }}</el-tag>
         </div>
       </div>
-      
+
       <div class="article-tags">
-        <el-tag
-          v-for="tag in article.tags"
-          :key="tag"
-          size="small"
-          effect="plain"
-          class="tag"
-        >
+        <el-tag v-for="tag in article.tags" :key="tag" size="small" effect="plain" class="tag">
           {{ tag }}
         </el-tag>
       </div>
@@ -46,7 +46,9 @@
       <el-image :src="article.coverImage" fit="cover" class="cover-image">
         <template #error>
           <div class="image-placeholder">
-            <el-icon :size="60"><Picture /></el-icon>
+            <el-icon :size="60">
+              <Picture />
+            </el-icon>
           </div>
         </template>
       </el-image>
@@ -56,7 +58,7 @@
       <div class="article-content">
         <div class="markdown-body" v-html="renderedContent"></div>
       </div>
-      
+
       <div class="article-sidebar">
         <el-card class="author-card">
           <div class="author-info">
@@ -65,7 +67,7 @@
             <p>前端开发工程师</p>
           </div>
         </el-card>
-        
+
         <el-card class="related-card">
           <template #header>
             <div class="card-header">
@@ -73,11 +75,7 @@
             </div>
           </template>
           <ul class="related-list">
-            <li
-              v-for="related in relatedArticles"
-              :key="related.id"
-              @click="goToArticle(related.id)"
-            >
+            <li v-for="related in relatedArticles" :key="related.id" @click="goToArticle(related.id)">
               {{ related.title }}
             </li>
           </ul>
@@ -87,16 +85,20 @@
 
     <div class="article-actions">
       <el-button @click="goBack">
-        <el-icon><Back /></el-icon>
+        <el-icon>
+          <Back />
+        </el-icon>
         返回列表
       </el-button>
       <el-button type="primary" @click="scrollToTop">
-        <el-icon><Top /></el-icon>
+        <el-icon>
+          <Top />
+        </el-icon>
         回到顶部
       </el-button>
     </div>
   </div>
-  
+
   <div v-else class="not-found">
     <el-empty description="文章不存在">
       <el-button type="primary" @click="$router.push('/articles')">
@@ -123,9 +125,7 @@ const article = computed(() => {
 
 const relatedArticles = computed(() => {
   if (!article.value) return []
-  return articles
-    .filter(a => a.id !== articleId.value && a.category === article.value.category)
-    .slice(0, 5)
+  return articles.filter(a => a.id !== articleId.value && a.category === article.value.category).slice(0, 5)
 })
 
 const renderedContent = computed(() => {
@@ -148,7 +148,7 @@ const goBack = () => {
   router.push('/articles')
 }
 
-const goToArticle = (id) => {
+const goToArticle = id => {
   router.push(`/article/${id}`)
 }
 
@@ -198,7 +198,7 @@ const scrollToTop = () => {
   display: flex;
   align-items: center;
   gap: 6px;
-  color: #909399;
+  color: var(--text-muted, #909399);
   font-size: 14px;
 }
 
@@ -226,8 +226,8 @@ const scrollToTop = () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f5f7fa;
-  color: #909399;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
 }
 
 .article-content-wrapper {
@@ -237,41 +237,44 @@ const scrollToTop = () => {
 }
 
 .article-content {
-  background: #fff;
+  background: var(--card-bg-color, #fff);
   padding: 40px;
   border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 12px var(--shadow-color, rgba(0, 0, 0, 0.05));
 }
 
 .markdown-body {
   line-height: 1.8;
-  color: #303133;
+  color: var(--text-color, #303133);
 }
 
 .markdown-body :deep(h1) {
   font-size: 28px;
   margin-bottom: 20px;
   padding-bottom: 10px;
-  border-bottom: 2px solid #e4e7ed;
+  border-bottom: 2px solid var(--border-color, #e4e7ed);
+  color: var(--text-color, #303133);
 }
 
 .markdown-body :deep(h2) {
   font-size: 24px;
   margin: 30px 0 15px;
-  color: #409EFF;
+  color: #409eff;
 }
 
 .markdown-body :deep(h3) {
   font-size: 20px;
   margin: 25px 0 12px;
+  color: var(--text-color, #303133);
 }
 
 .markdown-body :deep(p) {
   margin-bottom: 16px;
+  color: var(--text-secondary, #606266);
 }
 
 .markdown-body :deep(code) {
-  background: #f5f7fa;
+  background: var(--bg-color, #f5f7fa);
   padding: 2px 6px;
   border-radius: 4px;
   font-family: 'Courier New', monospace;
@@ -314,18 +317,18 @@ const scrollToTop = () => {
 
 .author-info h4 {
   margin: 12px 0 4px;
-  color: #303133;
+  color: var(--text-color, #303133);
 }
 
 .author-info p {
-  color: #909399;
+  color: var(--text-muted, #909399);
   font-size: 14px;
   margin: 0;
 }
 
 .card-header {
   font-weight: 600;
-  color: #303133;
+  color: var(--text-color, #303133);
 }
 
 .related-list {
@@ -336,9 +339,9 @@ const scrollToTop = () => {
 
 .related-list li {
   padding: 12px 0;
-  border-bottom: 1px solid #e4e7ed;
+  border-bottom: 1px solid var(--border-color, #e4e7ed);
   cursor: pointer;
-  color: #606266;
+  color: var(--text-secondary, #606266);
   transition: color 0.3s;
   font-size: 14px;
   line-height: 1.5;
@@ -349,7 +352,7 @@ const scrollToTop = () => {
 }
 
 .related-list li:hover {
-  color: #409EFF;
+  color: #409eff;
 }
 
 .article-actions {
@@ -369,20 +372,20 @@ const scrollToTop = () => {
   .article-content-wrapper {
     grid-template-columns: 1fr;
   }
-  
+
   .article-sidebar {
     order: -1;
   }
-  
+
   .cover-image,
   .image-placeholder {
     height: 250px;
   }
-  
+
   .article-title {
     font-size: 24px;
   }
-  
+
   .article-content {
     padding: 20px;
   }
